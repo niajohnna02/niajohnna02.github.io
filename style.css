@@ -1,0 +1,401 @@
+/* =========================================
+   INST630 Recipe Card — Romantic Café (Pink + Chocolate)
+   CSS-only (no HTML edits)
+   - Grid template areas (layout)
+   - Flexbox inside sections (components)
+   - Mobile-first + breakpoint at 48rem
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
+/* Recipe Card Color Palette */
+:root {
+  --pink-light: #ffe3ef;
+  --pink-medium: #f6c6d8;
+  --pink-berry: #c24c73;
+  --cream: #fff8f1;
+  --chocolate: #5a3e36;
+
+  --space-1: 0.75rem;
+  --space-2: 1.5rem;
+
+  --font-body: 'Nunito', sans-serif;
+  --font-display: 'Dancing Script', cursive;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--pink-light);
+
+  /* Gingham pattern background */
+  background-image:
+    linear-gradient(45deg, var(--pink-medium) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--pink-medium) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--pink-medium) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--pink-medium) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* Hide the assignment directions block at the bottom (CSS-only) */
+body > div:not(.recipe-container) {
+  display: none;
+}
+
+/* =========================================
+   PAGE LAYOUT (CSS GRID + TEMPLATE AREAS)
+========================================= */
+
+.recipe-container {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  gap: 1.5rem;
+
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "meta"
+    "desc"
+    "ingredients"
+    "instructions"
+    "footer";
+}
+
+/* Assign grid areas */
+.recipe-header { grid-area: header; }
+.recipe-meta { grid-area: meta; }
+.recipe-description { grid-area: desc; }
+.ingredients-section { grid-area: ingredients; }
+.instructions-section { grid-area: instructions; }
+.recipe-footer { grid-area: footer; }
+
+/* Desktop/tablet: ingredients + instructions side-by-side */
+@media (min-width: 48rem) {
+  .recipe-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "header header"
+      "meta meta"
+      "desc desc"
+      "ingredients instructions"
+      "footer footer";
+    align-items: start;
+  }
+}
+
+/* =========================================
+   HEADER (Taped Card Style)
+========================================= */
+
+.recipe-header {
+  background-color: var(--cream);
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  box-shadow:
+    0 4px 6px rgba(90, 62, 54, 0.10),
+    0 2px 4px rgba(90, 62, 54, 0.06);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-header:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 12px rgba(90, 62, 54, 0.15),
+    0 4px 8px rgba(90, 62, 54, 0.10);
+}
+
+/* Tape accent at the top (pseudo-element so no HTML needed) */
+.recipe-header::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 150px;
+  height: 32px;
+  background: rgba(210, 170, 120, 0.75); /* caramel tape */
+  border-left: 1px solid rgba(0, 0, 0, 0.10);
+  border-right: 1px solid rgba(0, 0, 0, 0.10);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
+  border-radius: 9px;
+}
+
+.recipe-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: var(--chocolate);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  font-weight: 600;
+
+  position: relative;
+  padding-right: 2.5rem; /* room for cookie */
+}
+
+/* Cookie next to title (emoji now; swap to image later) */
+.recipe-title::after {
+  content: "♡♡";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(8deg);
+  font-size: 2rem;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(90, 62, 54, 0.15);
+}
+
+/* =========================================
+   META (Flexbox Pill Badges)
+========================================= */
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  padding: 1.5rem;
+
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(90, 62, 54, 0.08);
+}
+
+.meta-item {
+  background-color: var(--cream);
+  color: var(--chocolate);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(90, 62, 54, 0.10);
+}
+
+.meta-item strong {
+  color: var(--pink-berry);
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.recipe-description {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(90, 62, 54, 0.08);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--chocolate);
+}
+
+.recipe-description p {
+  margin: 0;
+}
+
+/* =========================================
+   INGREDIENTS (Torn Paper Style)
+========================================= */
+
+.ingredients-section {
+  background-color: var(--cream);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(90, 62, 54, 0.12);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ingredients-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(90, 62, 54, 0.18);
+}
+
+/* Subtle paper texture effect */
+.ingredients-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(216, 106, 140, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(216, 106, 140, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.ingredients-section h2,
+.instructions-section h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: var(--chocolate);
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredients-list li {
+  padding: 0.75rem 0 0.75rem 2rem;
+  border-bottom: 1px dashed rgba(90, 62, 54, 0.15);
+  position: relative;
+  color: var(--chocolate);
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.ingredients-list li:last-child {
+  border-bottom: none;
+}
+
+.ingredients-list li:hover {
+  background-color: rgba(246, 198, 216, 0.20);
+  padding-left: 2.2rem;
+}
+
+/* Checkbox style bullet */
+.ingredients-list li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--pink-berry);
+  font-size: 1.2rem;
+}
+
+/* =========================================
+   INSTRUCTIONS (Lined Notebook Style)
+========================================= */
+
+.instructions-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(90, 62, 54, 0.12);
+  position: relative;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(216, 106, 140, 0.15) 31px,
+    rgba(216, 106, 140, 0.15) 32px
+  );
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instructions-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(90, 62, 54, 0.18);
+}
+
+.instructions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step-counter;
+}
+
+.instruction-step {
+  padding: 1rem 0 1rem 2.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  color: var(--chocolate);
+  font-size: 1rem;
+  line-height: 1.7;
+  counter-increment: step-counter;
+}
+
+.instruction-step::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: var(--pink-berry);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.instruction-step strong {
+  color: var(--pink-berry);
+  font-weight: 600;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.recipe-footer {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(90, 62, 54, 0.08);
+  text-align: center;
+  color: var(--chocolate);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.recipe-footer p {
+  margin: 0.25rem 0;
+}
+
+/* =========================================
+   MOBILE ADJUSTMENTS
+========================================= */
+
+@media (max-width: 767px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+
+  .recipe-title {
+    font-size: 2.2rem;
+  }
+
+  .recipe-header {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .recipe-image {
+    height: 200px;
+  }
+
+  .ingredients-section h2,
+  .instructions-section h2 {
+    font-size: 1.7rem;
+  }
+}
