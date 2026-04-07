@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Views - Framework Approach</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <p class="eyebrow">One Dataset, Four Views</p>
+      <h1>One Dataset Four Ways: Prince George’s County Restaurant Inspection Explorer</h1>
+      <p class="hero-text">
+        The same restaurant inspection dataset can tell different stories depending
+        on how it’s presented. Explore inspection records as grouped cards, a data
+        table, quick stats, and an interactive map.
+      </p>
+    </header>
+
+
+    <nav class="view-selector" aria-label="Select a view">
+      <button class="view-button" id="btn-categories" data-view="categories">
+        Category View
+      </button>
+      <button class="view-button" id="btn-table" data-view="table">
+        Table View
+      </button>
+      <button class="view-button" id="btn-stats" data-view="stats">
+        Stats View
+      </button>
+      <button class="view-button" id="btn-external" data-view="external">
+        External Library View
+      </button>
+    </nav>
+
+    <main class="display-container">
+      <div id="data-display">
+        <div class="loading">Loading restaurant inspection data...</div>
+      </div>
+    </main>
+
+    <section class="asst-box">
+      <h3>What each view emphasizes</h3>
+      <ul>
+        <li><strong>Category View:</strong> shows how inspection records cluster by city</li>
+        <li><strong>Table View:</strong> makes it easy to scan individual businesses</li>
+        <li><strong>Stats View:</strong> highlights overall patterns and key metrics</li>
+        <li><strong>External Library View:</strong> places restaurants on a live map</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
