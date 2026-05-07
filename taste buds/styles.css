@@ -1,0 +1,661 @@
+/* =========================================
+   TASTE BUDS — styles.css
+   Kawaii · Pastel · Mobile-First
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  --pink:       #ffb5e8;
+  --pink-dark:  #e880cc;
+  --pink-light: #ffd6f0;
+  --cream:      #fff8d7;
+  --cream-dark: #f5ecc0;
+  --mint:       #b4e7ce;
+  --mint-dark:  #7fcfb0;
+  --mint-text:  #2d5f4f;
+  --brown:      #9b7653;
+  --brown-dark: #7d5f3f;
+  --bg:         #ffdfef;
+  --white:      #ffffff;
+  --shadow:     0 6px 20px rgba(155, 118, 83, 0.18);
+  --shadow-sm:  0 3px 10px rgba(155, 118, 83, 0.12);
+  --border:     2px solid #000000;
+  --radius-xl:  28px;
+  --radius-lg:  20px;
+  --radius-md:  14px;
+  --radius-pill: 999px;
+  --font-display: 'Cherry Bomb One', cursive;
+  --font-body:    'Nunito', sans-serif;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--brown);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+button:focus-visible {
+  outline: 3px solid var(--pink-dark);
+  outline-offset: 3px;
+}
+
+/* ── App Shell ── */
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: radial-gradient(circle at 30% 20%, #ffd6f0 0%, var(--bg) 60%);
+}
+
+/* ── Screens ── */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 480px;
+  animation: fadeUp 0.4s ease both;
+}
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#screen-explore { max-width: 960px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--cream);
+  border-radius: var(--radius-xl);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 36px 28px;
+  width: 100%;
+}
+.card-white {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  width: 100%;
+}
+
+/* ── Typography ── */
+.title-display {
+  font-family: var(--font-display);
+  color: var(--pink);
+  text-align: center;
+  line-height: 1.2;
+}
+.title-display.cream {
+  color: var(--cream);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.22));
+}
+
+.text-body {
+  color: var(--brown);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  border: var(--border);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 52px;
+}
+.btn:active { transform: scale(0.96); }
+.btn-pink  { background: var(--pink);  color: var(--white); }
+.btn-pink:hover  { background: var(--pink-dark); }
+.btn-mint  { background: var(--mint);  color: var(--mint-text); }
+.btn-mint:hover  { background: var(--mint-dark); color: var(--white); }
+.btn-gray  { background: #e8e8e8; color: #555; }
+.btn-gray:hover  { background: #d4d4d4; }
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+/* ── Progress Bar ── */
+.progress-bar-wrap {
+  width: 100%;
+  background: rgba(255,255,255,0.5);
+  border-radius: var(--radius-pill);
+  height: 8px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--pink);
+  border-radius: var(--radius-pill);
+  transition: width 0.4s ease;
+}
+
+/* ══════════════════════════════════════════
+   WELCOME SCREEN
+══════════════════════════════════════════ */
+#screen-welcome {
+  text-align: center;
+  gap: 0;
+  padding: 24px 16px 16px;
+  max-width: 420px;
+}
+
+/* Title — cream/yellow with golden outline, matching Figma */
+.welcome-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 10vw, 4.2rem);
+  color: #fffde7;
+  -webkit-text-stroke: 1.5px #d4a240;
+  text-shadow: 2px 3px 0 #c48c28, 0 4px 12px rgba(100,60,0,0.18);
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+
+/* Food pins: boba centered top, burger bottom-left, pizza bottom-right */
+.welcome-food-pins {
+  margin: 10px 0 6px;
+}
+.food-pins-row {
+  display: grid;
+  grid-template-columns: 80px 80px 80px;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  width: 240px;
+  margin: 0 auto;
+}
+.food-pin {
+  font-size: 2.1rem;
+  display: block;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.22));
+  line-height: 1;
+}
+.pin-boba   { grid-column: 2; grid-row: 1; font-size: 2.4rem; margin-bottom: 2px; animation: floatPin 3.2s ease-in-out infinite alternate; }
+.pin-burger { grid-column: 1; grid-row: 2; animation: floatPin 2.8s ease-in-out infinite alternate-reverse; }
+.pin-pizza  { grid-column: 3; grid-row: 2; animation: floatPin 3.6s ease-in-out infinite alternate; }
+
+@keyframes floatPin {
+  from { transform: translateY(0) rotate(-2deg); }
+  to   { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* Bears + fries row */
+.welcome-bears-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  margin: 8px 0 20px;
+  width: 100%;
+}
+
+/* Bears overlap inward toward fries */
+.welcome-bear:first-child { margin-right: -28px; z-index: 1; }
+.welcome-bear:last-child  { margin-left: -28px;  z-index: 1; }
+
+.welcome-bear {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
+  flex-shrink: 0;
+}
+
+/* Fries — invisible button, fries image is the click target */
+.fries-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease;
+}
+.fries-btn:hover  { transform: scale(1.08); }
+.fries-btn:active { transform: scale(0.96); }
+.fries-btn:focus-visible {
+  outline: 3px solid var(--pink-dark);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+.fries-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25));
+  animation: friesBounce 2s ease-in-out infinite alternate;
+}
+@keyframes friesBounce {
+  from { transform: translateY(0) rotate(-1.5deg); }
+  to   { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+.welcome-box {
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 20px 22px;
+  margin-bottom: 16px;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--brown);
+  font-weight: 700;
+  width: 100%;
+}
+
+.start-btn {
+  font-size: 1.1rem;
+  padding: 16px 40px;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,181,232,0.5); }
+  50%       { box-shadow: 0 0 0 12px rgba(255,181,232,0); }
+}
+
+@media (min-width: 400px) {
+  .welcome-bear { width: 220px; height: 220px; }
+  .fries-img    { width: 175px; height: 175px; }
+}
+
+@media (min-width: 600px) {
+  .welcome-bear { width: 250px; height: 250px; }
+  .fries-img    { width: 200px; height: 200px; }
+}
+
+/* ══════════════════════════════════════════
+   LEARNING SCREENS — bear + thought bubble
+══════════════════════════════════════════ */
+
+/* Wrapper stacks bubble above bear, both centered */
+.bear-bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* Thought bubble PNG sits above the bear */
+.thought-bubble {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  /* Shift left slightly so it looks like it comes from bear's head */
+  margin-right: 30px;
+  margin-bottom: -10px; /* slight overlap with bear for natural look */
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+  animation: bubbleFloat 3s ease-in-out infinite alternate;
+}
+@keyframes bubbleFloat {
+  from { transform: translateY(0) rotate(-1deg); }
+  to   { transform: translateY(-6px) rotate(1deg); }
+}
+
+.learning-bear {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
+}
+
+/* ── Quiz Screens ── */
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+}
+.quiz-options.single-col {
+  grid-template-columns: 1fr;
+}
+
+.quiz-btn {
+  background: var(--cream);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 14px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brown);
+  text-align: center;
+  line-height: 1.4;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s, transform 0.12s, box-shadow 0.12s;
+  cursor: pointer;
+  min-height: 80px;
+  -webkit-tap-highlight-color: transparent;
+}
+.quiz-btn:hover  { background: var(--cream-dark); transform: translateY(-3px); box-shadow: var(--shadow); }
+.quiz-btn:active { transform: scale(0.96); }
+.quiz-btn.selected { background: var(--pink-light); border-color: var(--pink-dark); }
+
+.quiz-emoji { display: block; font-size: 1.6rem; margin-bottom: 4px; }
+
+/* ── Result Screen ── */
+.result-bear-img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.2));
+  animation: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes bounceIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.divider { border: none; border-top: 2px solid var(--pink-light); margin: 22px 0; }
+
+.cuisine-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--pink-light);
+  padding: 14px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.15s;
+}
+.cuisine-card:hover { box-shadow: var(--shadow); }
+
+.cuisine-num  { font-family: var(--font-display); font-size: 1.5rem; color: var(--pink); line-height: 1; flex-shrink: 0; }
+.cuisine-name { font-weight: 800; font-size: 1rem; color: var(--brown-dark); margin-bottom: 4px; }
+.cuisine-desc { font-size: 0.85rem; color: #888; line-height: 1.5; }
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-top: 6px;
+  margin-right: 4px;
+}
+.tag-pink { background: var(--pink);  color: var(--white); }
+.tag-mint { background: var(--mint);  color: var(--mint-text); }
+
+.chart-wrap { height: 220px; position: relative; }
+
+/* ── Explore Screen ── */
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+.explore-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.explore-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.explore-card-name { font-weight: 800; font-size: 1.05rem; color: var(--brown-dark); margin-bottom: 6px; }
+.explore-card-desc { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 10px; }
+
+/* ── Spacing helpers ── */
+.mb-4  { margin-bottom: 16px; }
+.mb-6  { margin-bottom: 24px; }
+.mb-8  { margin-bottom: 32px; }
+.mt-6  { margin-top: 24px; }
+.w-full { width: 100%; }
+.text-center { text-align: center; }
+.dots { font-size: 1.2rem; color: var(--pink-dark); letter-spacing: 4px; }
+
+/* ── Desktop ── */
+@media (min-width: 640px) {
+  .card { padding: 40px 36px; }
+  .result-bear-img { width: 220px; height: 220px; }
+  .thought-bubble { width: 220px; }
+  .learning-bear  { width: 140px; height: 140px; }
+}
+
+/* ── Accessibility ── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+
+/* Hide fallback start btn — fries image is the click target on welcome */
+#screen-welcome .start-btn {
+  display: none;
+}
+
+/* ── Home Button ── */
+.btn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid #000;
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--brown-dark);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+.btn-home:hover  { background: var(--cream); transform: scale(1.04); }
+.btn-home:active { transform: scale(0.96); }
+ 
+/* Quiz top bar: home button left, progress bar filling the rest */
+.quiz-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+.quiz-top-bar .progress-bar-wrap {
+  flex: 1;
+  margin-bottom: 0; /* override default bottom margin since it's in a row now */
+}
+ 
+/* ── Home Button ── */
+.btn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--brown-dark);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  min-height: 44px;
+}
+.btn-home:hover  { background: var(--cream); transform: scale(1.04); }
+.btn-home:active { transform: scale(0.96); }
+.btn-home:focus-visible {
+  outline: 3px solid var(--pink-dark);
+  outline-offset: 3px;
+}
+ 
+/* Quiz top bar: home button left, progress bar fills the rest */
+.quiz-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+.quiz-top-bar .progress-bar-wrap {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* ── Cute Explore / All Cuisines Screen ── */
+.explore-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.explore-header .title-display {
+  font-size: clamp(2rem, 8vw, 3rem);
+  margin-bottom: 8px;
+}
+
+.explore-subtitle {
+  background: var(--cream);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--brown-dark);
+  font-weight: 800;
+  padding: 8px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.explore-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+.explore-category-card {
+  background: var(--cream);
+  border: var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.explore-category-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.explore-bear {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+}
+
+.explore-category-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--pink-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.explore-category-header p {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--brown);
+  line-height: 1.35;
+}
+
+.cuisine-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cuisine-pill {
+  background: var(--white);
+  border: 1.5px solid var(--pink-light);
+  border-radius: 18px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-sm);
+  flex: 1 1 145px;
+}
+
+.cuisine-pill-name {
+  display: block;
+  font-weight: 900;
+  color: var(--brown-dark);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.cuisine-pill-meta {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--pink-dark);
+}
+
+@media (min-width: 760px) {
+  .explore-grid {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
