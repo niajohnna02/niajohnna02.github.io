@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>♡ Taste Buds ♡</title>
+  <meta name="description" content="Meet your Taste Bud! Answer a few fun questions and discover your perfect cuisine match." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div id="app" role="main">
+
+  <!-- SCREEN 1 — WELCOME -->
+  <section id="screen-welcome" class="screen" aria-label="Welcome screen">
+    <h1 class="welcome-title">Taste Buds</h1>
+    <div class="welcome-bears-row">
+      <img src="assets/pink-lemonade-bear.png" alt="A cream taste bud bear" class="welcome-bear" />
+      <button id="welcome-click-area" class="fries-btn" aria-label="Click the yummy fries to start!">
+        <img src="assets/fries.png" alt="Cute pink fries — click to start!" class="fries-img" />
+      </button>
+      <img src="assets/pink-lemonade-bear.png" alt="A cream taste bud bear" class="welcome-bear" />
+    </div>
+    <div class="welcome-box" role="note">
+      struggling with deciding what to eat? well, meet your taste buds!<br/>
+      click on the yummy fries to start! ♡♡♡♡
+    </div>
+    <button id="btn-start" class="btn btn-pink start-btn" aria-label="Start the Taste Buds quiz">
+      Let's Pick! ♡
+    </button>
+  </section>
+
+
+  <!-- SCREEN 2 — LEARNING 1 -->
+  <section id="screen-learning1" class="screen" aria-label="What is decision paralysis?">
+    <div class="card">
+      <div class="bear-bubble-wrap">
+        <img src="assets/brown-bear.png" alt="A thoughtful brown bear wondering what to eat" class="learning-bear" />
+      </div>
+      <h2 class="title-display mb-6" style="font-size:clamp(1.6rem,6vw,2.2rem); margin-bottom:20px;">
+        What is Decision Paralysis?
+      </h2>
+      <p class="text-body mb-6" style="margin-bottom:24px;">
+        Ever stare at a menu for way too long? Or ask <em>"what do you want to eat?"</em>
+        and get stuck in an endless loop? Do you get overwhelmed when you have a lot of options and you end up feeling stuck? That's decision paralysis!
+      </p>
+      <p class="dots mb-6" style="margin-bottom:24px;" aria-hidden="true">♡ ♡ ♡</p>
+      <div class="btn-row">
+        <button id="btn-l1-home" class="btn-home" aria-label="Go back to home screen">Home</button>
+        <button id="btn-l1-next" class="btn btn-mint" aria-label="Go to next screen">Next →</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCREEN 3 — LEARNING 2 -->
+  <section id="screen-learning2" class="screen" aria-label="Why does decision paralysis happen?">
+    <div class="card">
+      <div class="bear-bubble-wrap">
+        <img src="assets/pink-lemonade-bear.png" alt="A curious cream-colored bear" class="learning-bear" />
+      </div>
+      <h2 class="title-display mb-6" style="font-size:clamp(1.6rem,6vw,2.2rem); margin-bottom:20px;">
+        Why Does This Happen?
+      </h2>
+      <p class="text-body mb-6" style="margin-bottom:24px;">
+        Too many choices can overwhelm your brain! When you have endless options,
+        it's actually <strong>harder</strong> to pick something you'll love. ♡
+      </p>
+      <p class="dots mb-6" style="margin-bottom:24px;" aria-hidden="true">♡ ♡ ♡</p>
+      <div class="btn-row">
+        <button id="btn-l2-home" class="btn-home" aria-label="Go back to home screen">Home</button>
+        <button id="btn-l2-back" class="btn btn-gray" aria-label="Go back">← Back</button>
+        <button id="btn-l2-next" class="btn btn-mint" aria-label="Go to next screen">Next →</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCREEN 4 — LEARNING 3 -->
+  <section id="screen-learning3" class="screen" aria-label="How Taste Buds helps you">
+    <div class="card">
+      <div class="bear-bubble-wrap">
+        <img src="assets/green-pinkflower-bear.png" alt="A green bear with a pink flower, looking excited" class="learning-bear" />
+      </div>
+      <h2 class="title-display mb-6" style="font-size:clamp(1.6rem,6vw,2.2rem); margin-bottom:20px;">
+        Let's Fix That!
+      </h2>
+      <p class="text-body mb-6" style="margin-bottom:24px;">
+        We'll help you discover your unique Taste Bud personality!
+        Answer a few fun questions and we'll match you with the perfect cuisines.
+        Ready to meet your taste bud? ♡♡♡
+      </p>
+      <p class="dots mb-6" style="margin-bottom:24px;" aria-hidden="true">♡ ♡ ♡</p>
+      <div class="btn-row">
+        <button id="btn-l3-home" class="btn-home" aria-label="Go back to home screen">Home</button>
+        <button id="btn-l3-back" class="btn btn-gray" aria-label="Go back">← Back</button>
+        <button id="btn-l3-start" class="btn btn-pink" aria-label="Start the quiz">Let's Pick! ♡</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCREENS 5-8 — QUIZ (built by JS) -->
+  <section id="screen-quiz1" class="screen" aria-label="Quiz question 1"></section>
+  <section id="screen-quiz2" class="screen" aria-label="Quiz question 2"></section>
+  <section id="screen-quiz3" class="screen" aria-label="Quiz question 3"></section>
+  <section id="screen-quiz4" class="screen" aria-label="Quiz question 4"></section>
+
+
+  <!-- SCREEN 9 — RESULT -->
+  <section id="screen-result" class="screen" aria-label="Your Taste Bud result" style="max-width:520px;">
+    <h1 class="title-display cream mb-8" style="font-size:clamp(2rem,8vw,3rem); margin-bottom:24px;">
+      Meet Your Taste Bud! 
+    </h1>
+    <div class="card mb-6" style="margin-bottom:20px; text-align:center;">
+      <img id="result-bear-img" src="" alt="" class="result-bear-img" />
+      <h2 id="result-bear-name" class="title-display" style="font-size:1.8rem; margin-bottom:12px;"></h2>
+      <p id="result-bear-desc" class="text-body" style="margin-bottom:0;"></p>
+      <hr class="divider" />
+      <h3 class="title-display" style="font-size:1.4rem; margin-bottom:16px;">
+        Your Top Cuisine Matches ♡
+      </h3>
+      <div id="cuisine-list" role="list" aria-label="Top cuisine recommendations"></div>
+    </div>
+    <div class="card-white mb-6" style="margin-bottom:20px;">
+      <div class="chart-wrap">
+        <canvas id="tasteChart" aria-label="Your Taste Bud score breakdown bar chart" role="img"></canvas>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button id="btn-home-result" class="btn-home" aria-label="Go back to home screen">Home</button>
+      <button id="btn-try-again" class="btn btn-mint" aria-label="Retake the quiz">Try Again ♡</button>
+      <button id="btn-explore" class="btn btn-pink" aria-label="Explore all cuisines">Explore All ✨</button>
+    </div>
+  </section>
+
+
+  <!-- SCREEN 10 — EXPLORE -->
+  <section id="screen-explore" class="screen" aria-label="Explore all cuisines">
+    <div class="explore-header">
+      <h1 class="title-display cream">♡ Taste Bud Menu ♡</h1>
+      <p class="explore-subtitle">browse cuisines by your bear type</p>
+    </div>
+
+    <div id="explore-grid" class="explore-grid"></div>
+    <div class="btn-row">
+      <button id="btn-home-explore" class="btn-home" aria-label="Go back to home screen">Home</button>
+      <button id="btn-explore-back" class="btn btn-pink" aria-label="Back to your results">← Back to Results</button>
+    </div>
+  </section>
+
+</div><!-- /#app -->
+
+<script src="script.js"></script>
+</body>
+</html>

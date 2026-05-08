@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "name": "Pizza",
+    "category": "comfort",
+    "budget": "$",
+    "diningStyle": "casual hangout",
+    "description": "Warm, cheesy, and universally loved. Perfect for sharing with friends or a cozy night in."
+  },
+  {
+    "id": 2,
+    "name": "Pasta",
+    "category": "comfort",
+    "budget": "$$",
+    "diningStyle": "sit-down meal",
+    "description": "Hearty and satisfying in every form — from buttery fettuccine to bold bolognese."
+  },
+  {
+    "id": 3,
+    "name": "BBQ",
+    "category": "comfort",
+    "budget": "$$",
+    "diningStyle": "casual hangout",
+    "description": "Slow-cooked, smoky, fall-off-the-bone goodness that warms the soul."
+  },
+  {
+    "id": 4,
+    "name": "Mac & Cheese",
+    "category": "comfort",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "The ultimate comfort food — creamy, gooey, and instantly nostalgic."
+  },
+  {
+    "id": 5,
+    "name": "Soul Food",
+    "category": "comfort",
+    "budget": "$$",
+    "diningStyle": "sit-down meal",
+    "description": "Rich, soulful, and deeply comforting. Perfect when you want something warm and familiar."
+  },
+  {
+    "id": 6,
+    "name": "Thai Food",
+    "category": "spicy",
+    "budget": "$$",
+    "diningStyle": "casual hangout",
+    "description": "Bold and fragrant with a perfect balance of sweet, sour, salty, and spicy."
+  },
+  {
+    "id": 7,
+    "name": "Korean BBQ",
+    "category": "spicy",
+    "budget": "$$$",
+    "diningStyle": "sit-down meal",
+    "description": "Grill your own marinated meats at the table — interactive, social, and delicious."
+  },
+  {
+    "id": 8,
+    "name": "Mexican Food",
+    "category": "spicy",
+    "budget": "$",
+    "diningStyle": "casual hangout",
+    "description": "Vibrant flavors from tacos to tamales — bold, festive, and deeply satisfying."
+  },
+  {
+    "id": 9,
+    "name": "Indian Curry",
+    "category": "spicy",
+    "budget": "$$",
+    "diningStyle": "sit-down meal",
+    "description": "Complex, aromatic spices create warming curries and vibrant dishes full of depth."
+  },
+  {
+    "id": 10,
+    "name": "Sichuan Chinese",
+    "category": "spicy",
+    "budget": "$$",
+    "diningStyle": "casual hangout",
+    "description": "Mouth-numbing Sichuan peppercorns and fiery chilies create an addictive flavor bomb."
+  },
+  {
+    "id": 11,
+    "name": "Boba & Bubble Tea",
+    "category": "sweet",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "Chewy tapioca pearls in sweet, milky tea — the ultimate trendy sweet treat."
+  },
+  {
+    "id": 12,
+    "name": "Bakery & Pastries",
+    "category": "sweet",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "Flaky croissants, airy macarons, and fresh-baked cakes — pure happiness in every bite."
+  },
+  {
+    "id": 13,
+    "name": "Brunch",
+    "category": "sweet",
+    "budget": "$$",
+    "diningStyle": "casual hangout",
+    "description": "The best of breakfast and lunch — pancakes, waffles, French toast, and cozy cafe favorites."
+  },
+  {
+    "id": 14,
+    "name": "Dessert Cafes",
+    "category": "sweet",
+    "budget": "$$",
+    "diningStyle": "casual hangout",
+    "description": "Specialty desserts like matcha tiramisu, souffle pancakes, and artisan ice cream."
+  },
+  {
+    "id": 15,
+    "name": "Acai Bowls",
+    "category": "sweet",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "Thick, frosty acai blended with banana and topped with fresh fruit and granola."
+  },
+  {
+    "id": 16,
+    "name": "Japanese Food",
+    "category": "fresh",
+    "budget": "$$",
+    "diningStyle": "sit-down meal",
+    "description": "Refined and precise — from silky sushi to warming ramen and delicate tempura."
+  },
+  {
+    "id": 17,
+    "name": "Mediterranean",
+    "category": "fresh",
+    "budget": "$$",
+    "diningStyle": "sit-down meal",
+    "description": "Olive oil, fresh herbs, and vibrant vegetables create clean, satisfying flavors."
+  },
+  {
+    "id": 18,
+    "name": "Poke Bowls",
+    "category": "fresh",
+    "budget": "$$",
+    "diningStyle": "quick & easy",
+    "description": "Fresh ahi tuna or salmon over rice with colorful toppings and savory sauce."
+  },
+  {
+    "id": 19,
+    "name": "Seafood",
+    "category": "fresh",
+    "budget": "$$$",
+    "diningStyle": "sit-down meal",
+    "description": "Crispy fish tacos, butter-poached lobster, or simple steamed clams — the ocean on your plate."
+  },
+  {
+    "id": 20,
+    "name": "Salad & Grain Bowls",
+    "category": "fresh",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "Build-your-own bowls packed with greens, grains, and satisfying toppings."
+  },
+  {
+    "id": 21,
+    "name": "Burgers",
+    "category": "quick",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "A perfectly stacked burger with juicy patty, melted cheese, and all the fixings."
+  },
+  {
+    "id": 22,
+    "name": "Sandwiches & Wraps",
+    "category": "quick",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "Stacked high and wrapped tight — endlessly customizable and always satisfying."
+  },
+  {
+    "id": 23,
+    "name": "Food Trucks",
+    "category": "quick",
+    "budget": "$",
+    "diningStyle": "quick & easy",
+    "description": "Street food creativity at its best — from birria tacos to lobster rolls on the go."
+  },
+  {
+    "id": 24,
+    "name": "Ramen",
+    "category": "quick",
+    "budget": "$",
+    "diningStyle": "casual hangout",
+    "description": "Steaming bowls of rich broth with noodles, tender chashu pork, and a soft egg."
+  },
+  {
+    "id": 25,
+    "name": "Dumplings & Dim Sum",
+    "category": "quick",
+    "budget": "$",
+    "diningStyle": "casual hangout",
+    "description": "Bite-sized bundles of joy — soup dumplings, har gow, and siu mai are calling."
+  }
+]
